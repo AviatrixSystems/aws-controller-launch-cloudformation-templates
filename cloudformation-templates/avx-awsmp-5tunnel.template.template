@@ -25,7 +25,7 @@
          "VPCParam" : { "default" : "Which VPC should the Aviatrix Controller be deployed in?" },
          "SubnetParam" : { "default" : "Which public subnet in the VPC?" },
          "KeyNameParam" : { "default" : "Which keypair will be used?" },
-         "IAMRoleParam" : { "default" : "Select New if Aviatrix IAM role has not been created (first time launch). Select aviatrix-role-ec2 if there is already Avivatrix IAM role created"},
+         "IAMRoleParam" : { "default" : "Select New if Aviatrix IAM role has not been created (first time launch). Select aviatrix-role-ec2 if there is already Aviatrix IAM role created"},
          "InstanceTypeParam" : { "default" : "Select Controller Size"}
 
       }
@@ -67,27 +67,27 @@
     "AviatrixIAMRoleNotExist" : {"Fn::Equals" : [{"Ref" : "IAMRoleParam"}, "New"]}
   },
 
-"Mappings" :
+  "Mappings" :
   {
     "RegionMap": {
-      "us-east-1":      { "Name": "ami-355de84f" },
-      "us-east-2":      { "Name": "ami-041b3461" },
-      "us-west-1":      { "Name": "ami-51033c31" },
-      "us-west-2":      { "Name": "ami-e6d8129e" },
-      "ca-central-1":   { "Name": "ami-6b3e860f" },
-      "eu-central-1":   { "Name": "ami-a4880ccb" },
-      "eu-west-1":      { "Name": "ami-af0cacd6" },
-      "eu-west-2":      { "Name": "ami-a5011dc1" },
-      "ap-southeast-1": { "Name": "ami-b87438db" },
-      "ap-southeast-2": { "Name": "ami-5a698738" },
-      "ap-northeast-2": { "Name": "ami-f286229c" },
-      "ap-northeast-1": { "Name": "ami-a401aec2" },
-      "ap-south-1":     { "Name": "ami-5feda030" },
-      "sa-east-1":      { "Name": "ami-c57f04a9" },
-      "us-gov-west-1":  { "Name": "ami-c1c844a0" }
+      "us-east-1":      { "Name": "ami-855463ff" },
+      "us-east-2":      { "Name": "ami-9db399f8" },
+      "us-west-1":      { "Name": "ami-ee1b168e" },
+      "us-west-2":      { "Name": "ami-baea56c2" },
+      "ca-central-1":   { "Name": "ami-a90184cd" },
+      "eu-central-1":   { "Name": "ami-49c05926" },
+      "eu-west-1":      { "Name": "ami-5c99fc25" },
+      "eu-west-2":      { "Name": "ami-c6b7aca2" },
+      "eu-west-3":      { "Name": "ami-0cd06671" },
+      "ap-southeast-1": { "Name": "ami-1cfd8460" },
+      "ap-southeast-2": { "Name": "ami-618f7103" },
+      "ap-northeast-2": { "Name": "ami-fdae0d93" },
+      "ap-northeast-1": { "Name": "ami-d10163b7" },
+      "ap-south-1":     { "Name": "ami-b65203d9" },
+      "sa-east-1":      { "Name": "ami-ba1c50d6" }
     }
   },
-
+  
   "Resources" :
   {
      "AviatrixRoleEC2":
@@ -366,14 +366,14 @@
       "Properties":
       {
         "Path": "/",
+        "InstanceProfileName": "aviatrix-role-ec2",
         "Roles": [{
-	   "Fn::If" : [
-	      "AviatrixIAMRoleNotExist",
+        "Fn::If" : [
+          "AviatrixIAMRoleNotExist",
               { "Ref": "AviatrixRoleEC2" },
-              {  "Ref" : "IAMRoleParam"}
+              { "Ref": "IAMRoleParam"}
             ]
          }]
-
       }
     },
     "AviatrixController" :
