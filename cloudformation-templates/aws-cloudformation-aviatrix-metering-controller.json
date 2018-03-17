@@ -94,24 +94,23 @@
     "AviatrixIAMRoleNotExist": {"Fn::Equals": [{ "Ref": "IAMRoleParam" }, "New"]}
   },
 
-  "Mappings" : {
+  "Mappings": {
     "RegionMap": {
-      "us-east-1":      { "Name": "ami-0daf6277" },
-      "us-east-2":      { "Name": "ami-3db39e58" },
-      "us-west-1":      { "Name": "ami-98dfecf8" },
-      "us-west-2":      { "Name": "ami-ce75b1b6" },
-      "ca-central-1":   { "Name": "ami-6608b102" },
-      "eu-central-1":   { "Name": "ami-938f33fc" },
-      "eu-west-1":      { "Name": "ami-b7d000ce" },
-      "eu-west-2":      { "Name": "ami-93e1f3f7" },
-      "eu-west-3":      { "Name": "ami-82db6cff" },
-      "ap-southeast-1": { "Name": "ami-20acd543" },
-      "ap-southeast-2": { "Name": "ami-e8b0528a" },
-      "ap-northeast-1": { "Name": "ami-731fc215" },
-      "ap-northeast-2": { "Name": "ami-7a72a814" },
-      "ap-south-1":     { "Name": "ami-56befe39" },
-      "sa-east-1":      { "Name": "ami-24364848" },
-      "us-gov-west-1":  { "Name": "ami-94da57f5" }
+      "us-east-1":      { "Name": "ami-e099849a" },
+      "us-east-2":      { "Name": "ami-55face30" },
+      "us-west-1":      { "Name": "ami-e4010884" },
+      "us-west-2":      { "Name": "ami-3bca4943" },
+      "ca-central-1":   { "Name": "ami-b10581d5" },
+      "eu-central-1":   { "Name": "ami-c12c4dae" },
+      "eu-west-1":      { "Name": "ami-1770006e" },
+      "eu-west-2":      { "Name": "ami-ae09ecc9" },
+      "eu-west-3":      { "Name": "ami-48982e35" },
+      "ap-southeast-1": { "Name": "ami-ccd391b0" },
+      "ap-southeast-2": { "Name": "ami-73ba7f11" },
+      "ap-northeast-2": { "Name": "ami-675af809" },
+      "ap-northeast-1": { "Name": "ami-13bec375" },
+      "ap-south-1":     { "Name": "ami-fe134e91" },
+      "sa-east-1":      { "Name": "ami-51246d3d" }
     }
   },
 
@@ -194,6 +193,13 @@
                 "sts:AssumeRole"
               ],
               "Resource": "arn:aws:iam::*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "aws-marketplace:MeterUsage"
+              ],
+              "Resource": "*"
             }
           ]
         },
