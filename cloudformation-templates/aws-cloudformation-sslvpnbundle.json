@@ -73,7 +73,6 @@
         "New"
       ]
     },
-
     "InstanceTypeParam": {
       "Type": "String",
       "Default": "t2.large",
@@ -93,7 +92,6 @@
       ],
       "Description": "Select an instance size for the controller. Default is t2.large"
     }
-    
   },
 
   "Conditions": {
@@ -195,7 +193,14 @@
               "Action": [
                 "sts:AssumeRole"
               ],
-              "Resource": "arn:aws:iam::*"
+              "Resource": "arn:aws:iam::*:role/aviatrix-*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "aws-marketplace:MeterUsage"
+              ],
+              "Resource": "*"
             }
           ]
         },
@@ -314,7 +319,8 @@
                 "ec2:DeleteVpnConnection",
                 "ec2:CreateVpcPeeringConnection",
                 "ec2:AcceptVpcPeeringConnection",
-                "ec2:DeleteVpcPeeringConnection"
+                "ec2:DeleteVpcPeeringConnection",
+                "ec2:ModifyInstanceCreditSpecification"
               ],
               "Resource": "*"
             },
@@ -345,8 +351,6 @@
             {
               "Effect": "Allow",
               "Action": [
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
                 "s3:PutObject",
                 "s3:DeleteObject"
               ],
