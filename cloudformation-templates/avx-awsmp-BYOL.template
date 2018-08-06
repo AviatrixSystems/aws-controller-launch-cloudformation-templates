@@ -466,7 +466,8 @@
             "Properties": {
                 "InstanceId": {
                     "Ref": "AviatrixController"
-                }
+                },
+                "Domain": "vpc"
             }
         },
 
