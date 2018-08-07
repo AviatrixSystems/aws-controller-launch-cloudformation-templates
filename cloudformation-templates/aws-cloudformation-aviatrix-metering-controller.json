@@ -1,9 +1,10 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Aviatrix Systems - Creates the necessary policies, roles, security group and launches Aviatrix Controller instance --AWSMP::109cd06c-210a-4fa4-839b-708683c66dc6::c2184102-8f8b-42de-94a6-15c43fa34b97",
+    "Description": "Aviatrix Systems - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
-            "ParameterGroups": [{
+            "ParameterGroups": [
+                {
                     "Label": {
                         "default": "Network Configuration"
                     },
@@ -76,51 +77,61 @@
             "Type": "String",
             "Default": "t2.large",
             "AllowedValues": [
-            "t2.medium",
-            "t2.large",
-            "t2.xlarge",
-            "t2.2xlarge",
+                "t2.medium",
+                "t2.large",
+                "t2.xlarge",
+                "t2.2xlarge",
 
-            "m4.large",
-            "m4.xlarge",
-            "m4.2xlarge",
-            "m4.4xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.2xlarge",
+                "m4.4xlarge",
 
-            "c4.large",
-            "c4.xlarge",
-            "c4.2xlarge",
-            "c4.4xlarge"
+                "c4.large",
+                "c4.xlarge",
+                "c4.2xlarge",
+                "c4.4xlarge"
             ],
             "Description": "Select an instance size for the controller. Default is t2.large"
         }
     },
 
     "Conditions": {
-        "AviatrixIAMRoleNotExist": { "Fn::Equals": [{ "Ref": "IAMRoleParam" }, "New"] }
+        "AviatrixIAMRoleNotExist": {
+            "Fn::Equals": [
+                {
+                    "Ref": "IAMRoleParam"
+                },
+                "New"
+            ]
+        }
     },
 
-    "Mappings" : {
+    "Mappings": {
         "RegionMap": {
             "us-east-1":      { "Name": "ami-df74f6a0" },
             "us-east-2":      { "Name": "ami-a72c11c2" },
             "us-west-1":      { "Name": "ami-e3170983" },
             "us-west-2":      { "Name": "ami-1f770667" },
+
             "ca-central-1":   { "Name": "ami-8d8707e9" },
+
             "eu-central-1":   { "Name": "ami-d9bf9d32" },
             "eu-west-1":      { "Name": "ami-f227138b" },
             "eu-west-2":      { "Name": "ami-a06587c7" },
             "eu-west-3":      { "Name": "ami-339e2f4e" },
+
             "ap-southeast-1": { "Name": "ami-8fcbfef3" },
             "ap-southeast-2": { "Name": "ami-e90ed98b" },
             "ap-northeast-1": { "Name": "ami-358f674a" },
             "ap-northeast-2": { "Name": "ami-cc08a1a2" },
             "ap-south-1":     { "Name": "ami-ccc4e7a3" },
+            
             "sa-east-1":      { "Name": "ami-1a90cd76" }
         }
     },
 
     "Resources": {
-
         "AviatrixRoleEC2": {
             "Type": "AWS::IAM::Role",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -128,22 +139,23 @@
                 "RoleName": "aviatrix-role-ec2",
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
-                    "Statement": [{
-                        "Effect": "Allow",
-                        "Principal": {
-                            "Service": [
-                                "ec2.amazonaws.com"
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ec2.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
                             ]
-                        },
-                        "Action": [
-                            "sts:AssumeRole"
-                        ]
-                    }]
+                        }
+                    ]
                 },
                 "Path": "/"
             }
         },
-
         "AviatrixRoleApp": {
             "Type": "AWS::IAM::Role",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -151,30 +163,34 @@
                 "RoleName": "aviatrix-role-app",
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
-                    "Statement": [{
-                        "Effect": "Allow",
-                        "Principal": {
-                            "AWS": [{
-                                "Fn::Join": [
-                                    "", [
-                                        "arn:aws:iam::",
-                                        {
-                                            "Ref": "AWS::AccountId"
-                                        },
-                                        ":root"
-                                    ]
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": [
+                                    {
+                                        "Fn::Join": [
+                                            "",
+                                            [
+                                                "arn:aws:iam::",
+                                                {
+                                                    "Ref": "AWS::AccountId"
+                                                },
+                                                ":root"
+                                            ]
+                                        ]
+                                    }
                                 ]
-                            }]
-                        },
-                        "Action": [
-                            "sts:AssumeRole"
-                        ]
-                    }]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
                 },
                 "Path": "/"
             }
         },
-
         "CreateAviatrixAssumeRolePolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -184,7 +200,8 @@
                 "Path": "/",
                 "PolicyDocument": {
                     "Version": "2012-10-17",
-                    "Statement": [{
+                    "Statement": [
+                        {
                             "Effect": "Allow",
                             "Action": [
                                 "sts:AssumeRole"
@@ -200,12 +217,13 @@
                         }
                     ]
                 },
-                "Roles": [{
-                    "Ref": "AviatrixRoleEC2"
-                }]
+                "Roles": [
+                    {
+                        "Ref": "AviatrixRoleEC2"
+                    }
+                ]
             }
         },
-
         "CreateAviatrixAppPolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -215,7 +233,8 @@
                 "Path": "/",
                 "PolicyDocument": {
                     "Version": "2012-10-17",
-                    "Statement": [{
+                    "Statement": [
+                        {
                             "Effect": "Allow",
                             "Action": [
                                 "ec2:Describe*",
@@ -244,11 +263,6 @@
                             "Effect": "Allow",
                             "Action": "ec2:RunInstances",
                             "Resource": "arn:aws:ec2:*:*:image/ami-*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": "ec2:RunInstances",
-                            "Resource": "*"
                         },
                         {
                             "Effect": "Allow",
@@ -337,8 +351,8 @@
                                 "elasticloadbalancing:DescribeListeners",
                                 "elasticloadbalancing:DeleteListener",
                                 "elasticloadbalancing:ModifyLoadBalancerAttributes",
-                                "elasticloadbalancing:RegisterTargets"
-
+                                "elasticloadbalancing:RegisterTargets",
+                                "elasticloadbalancing:DeregisterTargets"
                             ],
                             "Resource": "*"
                         },
@@ -396,22 +410,26 @@
                         }
                     ]
                 },
-                "Roles": [{
-                    "Ref": "AviatrixRoleApp"
-                }]
+                "Roles": [
+                    {
+                        "Ref": "AviatrixRoleApp"
+                    }
+                ]
             }
         },
-
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "Path": "/",
                 "InstanceProfileName": "aviatrix-role-ec2",
-                "Roles": [{ "Ref": "AviatrixRoleEC2" }]
+                "Roles": [
+                    {
+                        "Ref": "AviatrixRoleEC2"
+                    }
+                ]
             }
         },
-
         "AviatrixController": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
@@ -424,6 +442,14 @@
                         "Name"
                     ]
                 },
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": "/dev/sda1",
+                        "Ebs": {
+                            "VolumeSize": "20"
+                        }
+                    }
+                ],
                 "DisableApiTermination": "true",
                 "KeyName": {
                     "Ref": "KeyNameParam"
@@ -432,16 +458,21 @@
                     "Ref": "InstanceTypeParam"
                 },
                 "IamInstanceProfile": "aviatrix-role-ec2",
-                "NetworkInterfaces": [{
-                    "DeviceIndex": "0",
-                    "GroupSet": [{
-                        "Ref": "AviatrixSG"
-                    }],
-                    "SubnetId": {
-                        "Ref": "SubnetParam"
+                "NetworkInterfaces": [
+                    {
+                        "DeviceIndex": "0",
+                        "GroupSet": [
+                            {
+                                "Ref": "AviatrixSG"
+                            }
+                        ],
+                        "SubnetId": {
+                            "Ref": "SubnetParam"
+                        }
                     }
-                }],
-                "Tags": [{
+                ],
+                "Tags": [
+                    {
                         "Key": "Name",
                         "Value": "AviatrixController"
                     },
@@ -452,16 +483,15 @@
                 ]
             }
         },
-
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "InstanceId": {
                     "Ref": "AviatrixController"
-                }
+                },
+                "Domain": "vpc"
             }
         },
-
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
@@ -469,13 +499,16 @@
                 "VpcId": {
                     "Ref": "VPCParam"
                 },
-                "SecurityGroupIngress": [{
-                    "IpProtocol": "tcp",
-                    "CidrIp": "0.0.0.0/0",
-                    "FromPort": "443",
-                    "ToPort": "443"
-                }],
-                "Tags": [{
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": "443",
+                        "ToPort": "443"
+                    }
+                ],
+                "Tags": [
+                    {
                         "Key": "Name",
                         "Value": "AviatrixSecurityGroup"
                     },
