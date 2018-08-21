@@ -445,7 +445,8 @@
                     {
                         "DeviceName": "/dev/sda1",
                         "Ebs": {
-                            "VolumeSize": "20"
+                            "VolumeSize": "20",
+                            "VolumeType": "gp2"
                         }
                     }
                 ],
