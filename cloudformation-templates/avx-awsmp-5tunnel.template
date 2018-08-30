@@ -476,7 +476,10 @@
                         "Key": "Project",
                         "Value": "Aviatrix"
                     }
-                ]
+                ],
+                "CreditSpecification": {
+                    "CPUCredits": "unlimited"
+                }
             }
         },
         "AviatrixEIP": {
