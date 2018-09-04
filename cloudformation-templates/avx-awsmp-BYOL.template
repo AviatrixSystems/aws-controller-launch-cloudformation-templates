@@ -106,10 +106,9 @@
         },
         "T2SeriesTrue": {
             "Fn::Or": [
-                 {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
-                 {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]},
-                 {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.2xlarge"]}
-
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.2xlarge"]}
             ]
         }
     },
@@ -499,6 +498,7 @@
                 }
             }
         },
+        
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {

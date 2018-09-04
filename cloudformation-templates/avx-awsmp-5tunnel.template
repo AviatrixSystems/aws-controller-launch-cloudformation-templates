@@ -99,6 +99,12 @@
                 },
                 "New"
             ]
+        },
+        "T2SeriesTrue": {
+            "Fn::Or": [
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]}
+            ]
         }
     },
 
@@ -478,7 +484,11 @@
                     }
                 ],
                 "CreditSpecification": {
-                    "CPUCredits": "unlimited"
+                    "Fn::If" : [
+                         "T2SeriesTrue", 
+                         {"CPUCredits": "unlimited"},
+                         {"Ref": "AWS::NoValue"}
+                     ]
                 }
             }
         },

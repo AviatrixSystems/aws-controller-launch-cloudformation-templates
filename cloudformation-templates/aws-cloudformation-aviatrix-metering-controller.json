@@ -77,7 +77,6 @@
             "Type": "String",
             "Default": "t2.large",
             "AllowedValues": [
-                "t2.medium",
                 "t2.large",
                 "t2.xlarge",
                 "t2.2xlarge",
@@ -103,6 +102,13 @@
                     "Ref": "IAMRoleParam"
                 },
                 "New"
+            ]
+        },
+        "T2SeriesTrue": {
+            "Fn::Or": [
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.2xlarge"]}
             ]
         }
     },
@@ -483,10 +489,15 @@
                     }
                 ],
                 "CreditSpecification": {
-                    "CPUCredits": "unlimited"
+                    "Fn::If" : [
+                         "T2SeriesTrue", 
+                         {"CPUCredits": "unlimited"},
+                         {"Ref": "AWS::NoValue"}
+                     ]
                 }
             }
         },
+        
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {

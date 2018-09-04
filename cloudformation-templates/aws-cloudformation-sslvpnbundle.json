@@ -77,7 +77,6 @@
             "Type": "String",
             "Default": "t2.large",
             "AllowedValues": [
-                "t2.medium",
                 "t2.large",
                 
                 "m4.large",
@@ -102,6 +101,9 @@
                 },
                 "New"
             ]
+        },
+        "T2SeriesTrue": {
+           "Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]
         }
     },
 
@@ -481,7 +483,11 @@
                     }
                 ],
                 "CreditSpecification": {
-                    "CPUCredits": "unlimited"
+                    "Fn::If" : [
+                         "T2SeriesTrue", 
+                         {"CPUCredits": "unlimited"},
+                         {"Ref": "AWS::NoValue"}
+                     ]
                 }
             }
         },
