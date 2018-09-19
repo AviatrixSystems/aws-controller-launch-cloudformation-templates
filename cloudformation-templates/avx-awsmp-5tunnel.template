@@ -157,6 +157,7 @@
                 "Path": "/"
             }
         },
+
         "AviatrixRoleApp": {
             "Type": "AWS::IAM::Role",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -192,6 +193,7 @@
                 "Path": "/"
             }
         },
+
         "CreateAviatrixAssumeRolePolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -215,6 +217,18 @@
                                 "aws-marketplace:MeterUsage"
                             ],
                             "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:GetObject",
+                                "s3:ListObject",
+                                "s3:GetBucket",
+                                "s3:ListBucket",
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": "*"
                         }
                     ]
                 },
@@ -225,6 +239,7 @@
                 ]
             }
         },
+
         "CreateAviatrixAppPolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -249,7 +264,9 @@
                                 "s3:Get*",
                                 "iam:List*",
                                 "iam:Get*",
-                                "directconnect:Describe*"
+                                "directconnect:Describe*",
+                                "guardduty:Get*",
+                                "guardduty:List*"
                             ],
                             "Resource": "*"
                         },
@@ -369,6 +386,8 @@
                         {
                             "Effect": "Allow",
                             "Action": [
+                                "s3:CreateBucket",
+                                "s3:DeleteBucket",
                                 "s3:PutObject",
                                 "s3:DeleteObject"
                             ],
@@ -405,7 +424,16 @@
                                 "iam:AddRoleToInstanceProfile",
                                 "iam:CreateInstanceProfile",
                                 "iam:DeleteInstanceProfile",
-                                "iam:RemoveRoleFromInstanceProfile"
+                                "iam:RemoveRoleFromInstanceProfile",
+                                "iam:CreateServiceLinkedRole"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "guardduty:CreateDetector",
+                                "guardduty:DeleteDetector"
                             ],
                             "Resource": "*"
                         }
@@ -418,6 +446,7 @@
                 ]
             }
         },
+
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -431,6 +460,7 @@
                 ]
             }
         },
+
         "AviatrixController": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
@@ -492,6 +522,7 @@
                 }
             }
         },
+
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {
@@ -501,6 +532,7 @@
                 "Domain": "vpc"
             }
         },
+        
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
