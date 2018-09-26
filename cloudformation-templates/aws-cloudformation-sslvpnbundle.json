@@ -156,6 +156,7 @@
                 "Path": "/"
             }
         },
+
         "AviatrixRoleApp": {
             "Type": "AWS::IAM::Role",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -191,6 +192,7 @@
                 "Path": "/"
             }
         },
+
         "CreateAviatrixAssumeRolePolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -224,6 +226,7 @@
                 ]
             }
         },
+
         "CreateAviatrixAppPolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -248,7 +251,9 @@
                                 "s3:Get*",
                                 "iam:List*",
                                 "iam:Get*",
-                                "directconnect:Describe*"
+                                "directconnect:Describe*",
+                                "guardduty:Get*",
+                                "guardduty:List*"
                             ],
                             "Resource": "*"
                         },
@@ -328,7 +333,9 @@
                                 "ec2:CreateVpcPeeringConnection",
                                 "ec2:AcceptVpcPeeringConnection",
                                 "ec2:DeleteVpcPeeringConnection",
-                                "ec2:ModifyInstanceCreditSpecification"
+                                "ec2:ModifyInstanceCreditSpecification",
+                                "ec2:CreateNetworkAclEntry",
+                                "ec2:ReplaceNetworkAclEntry"
                             ],
                             "Resource": "*"
                         },
@@ -350,7 +357,6 @@
                                 "elasticloadbalancing:CreateListener",
                                 "elasticloadbalancing:DescribeListeners",
                                 "elasticloadbalancing:DeleteListener",
-                                "elasticloadbalancing:ModifyLoadBalancerAttributes",
                                 "elasticloadbalancing:RegisterTargets",
                                 "elasticloadbalancing:DeregisterTargets"
                             ],
@@ -393,18 +399,21 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "sts:AssumeRole"
-                            ],
-                            "Resource": "arn:aws:iam::*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
                                 "iam:PassRole",
                                 "iam:AddRoleToInstanceProfile",
                                 "iam:CreateInstanceProfile",
                                 "iam:DeleteInstanceProfile",
-                                "iam:RemoveRoleFromInstanceProfile"
+                                "iam:RemoveRoleFromInstanceProfile",
+                                "iam:CreateServiceLinkedRole"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "guardduty:CreateDetector",
+                                "guardduty:DeleteDetector",
+                                "guardduty:UpdateDetector"
                             ],
                             "Resource": "*"
                         }
@@ -417,6 +426,7 @@
                 ]
             }
         },
+
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -430,6 +440,7 @@
                 ]
             }
         },
+
         "AviatrixController": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
@@ -481,16 +492,10 @@
                         "Key": "Project",
                         "Value": "Aviatrix"
                     }
-                ],
-                "CreditSpecification": {
-                    "Fn::If" : [
-                         "T2SeriesTrue", 
-                         {"CPUCredits": "unlimited"},
-                         {"Ref": "AWS::NoValue"}
-                     ]
-                }
+                ]
             }
         },
+
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {
@@ -500,6 +505,7 @@
                 "Domain": "vpc"
             }
         },
+        
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
