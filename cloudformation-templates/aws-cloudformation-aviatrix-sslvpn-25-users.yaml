@@ -59,11 +59,9 @@ Parameters:
     - m4.large
     - m4.xlarge
     - m4.2xlarge
-    - m4.4xlarge
     - c4.large
     - c4.xlarge
     - c4.2xlarge
-    - c4.4xlarge
     Description: Select an instance size for the controller. Default is t2.large
 Conditions:
   AviatrixIAMRoleNotExist:
@@ -84,37 +82,37 @@ Conditions:
 Mappings:
   RegionMap:
     us-east-1:
-      Name: ami-e578ef9a
+      Name: ami-a97ffbd6
     us-east-2:
-      Name: ami-d8a39ebd
+      Name: ami-6e78450b
     us-west-1:
-      Name: ami-fa322b9a
+      Name: ami-6ad0cf0a
     us-west-2:
-      Name: ami-98b3c1e0
+      Name: ami-ecb0c794
     ca-central-1:
-      Name: ami-8c4bcbe8
+      Name: ami-21e96945
     eu-central-1:
-      Name: ami-02f9d6e9
+      Name: ami-a9153642
     eu-west-1:
-      Name: ami-cdcefeb4
+      Name: ami-2a6e4453
     eu-west-2:
-      Name: ami-86f518e1
+      Name: ami-53dc3e34
     eu-west-3:
-      Name: ami-3c71c041
+      Name: ami-4b962736
     ap-southeast-1:
-      Name: ami-0b744577
+      Name: ami-bf9cb7c3
     ap-southeast-2:
-      Name: ami-c79746a5
+      Name: ami-d8489cba
     ap-northeast-1:
-      Name: ami-0238cf7d
+      Name: ami-edc52a92
     ap-northeast-2:
-      Name: ami-3eb21a50
+      Name: ami-3943ea57
     ap-south-1:
-      Name: ami-1294b67d
+      Name: ami-db85a5b4
     sa-east-1:
-      Name: ami-ed85d981
+      Name: ami-10ebb97c
     us-gov-west-1:
-      Name: ami-edc1578c
+      Name: ami-c8f264a9
 Resources:
   AviatrixRoleEC2:
     Type: AWS::IAM::Role

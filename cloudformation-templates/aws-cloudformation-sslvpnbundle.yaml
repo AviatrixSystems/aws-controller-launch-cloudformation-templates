@@ -54,8 +54,6 @@ Parameters:
     Default: t2.large
     AllowedValues:
     - t2.large
-    - t2.xlarge
-    - t2.2xlarge
     - m4.large
     - m4.xlarge
     - m4.2xlarge
@@ -71,50 +69,41 @@ Conditions:
     - Ref: IAMRoleParam
     - New
   T2SeriesTrue:
-    Fn::Or:
-    - Fn::Equals:
-      - Ref: InstanceTypeParam
-      - t2.large
-    - Fn::Equals:
-      - Ref: InstanceTypeParam
-      - t2.xlarge
-    - Fn::Equals:
-      - Ref: InstanceTypeParam
-      - t2.2xlarge
+    Fn::Equals:
+    - Ref: InstanceTypeParam
+    - t2.large
 Mappings:
   RegionMap:
     us-east-1:
-      Name: ami-e578ef9a
+      Name: ami-689b1517
     us-east-2:
-      Name: ami-d8a39ebd
+      Name: ami-7ffcc11a
     us-west-1:
-      Name: ami-fa322b9a
+      Name: ami-5cf0ee3c
     us-west-2:
-      Name: ami-98b3c1e0
+      Name: ami-f8562680
     ca-central-1:
-      Name: ami-8c4bcbe8
+      Name: ami-7a9c1c1e
     eu-central-1:
-      Name: ami-02f9d6e9
+      Name: ami-91d1fc7a
     eu-west-1:
-      Name: ami-cdcefeb4
+      Name: ami-91a097e8
     eu-west-2:
-      Name: ami-86f518e1
+      Name: ami-f65dbf91
     eu-west-3:
-      Name: ami-3c71c041
+      Name: ami-788b3a05
     ap-southeast-1:
-      Name: ami-0b744577
+      Name: ami-dbbe8aa7
     ap-southeast-2:
-      Name: ami-c79746a5
+      Name: ami-d7b761b5
     ap-northeast-1:
-      Name: ami-0238cf7d
+      Name: ami-00759e7f
     ap-northeast-2:
-      Name: ami-3eb21a50
+      Name: ami-dbe64eb5
     ap-south-1:
-      Name: ami-1294b67d
+      Name: ami-0576546a
     sa-east-1:
-      Name: ami-ed85d981
-    us-gov-west-1:
-      Name: ami-edc1578c
+      Name: ami-a1fba6cd
 Resources:
   AviatrixRoleEC2:
     Type: AWS::IAM::Role
