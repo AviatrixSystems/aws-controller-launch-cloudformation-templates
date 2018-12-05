@@ -383,8 +383,8 @@
                                 "ram:DisassociateResourceShare",
                                 "ram:TagResourceShare",
                                 "ram:UntagResourceShare",
-                                "ram:AcceptResourceShareInvitations",
-                                "ram:EnableSharingWithAwsOrganizations"
+                                "ram:AcceptResourceShareInvitation",
+                                "ram:EnableSharingWithAwsOrganization"
                             ],
                             "Resource": "*"
                         },
