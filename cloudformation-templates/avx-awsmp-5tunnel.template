@@ -127,7 +127,7 @@
             "ap-northeast-1": { "Name": "ami-123bcc6d" },
             "ap-northeast-2": { "Name": "ami-02b1196c" },
             "ap-south-1":     { "Name": "ami-6f94b600" },
-            
+
             "sa-east-1":      { "Name": "ami-fe84d892" }
         }
     },
@@ -377,10 +377,10 @@
                                 "ram:UpdateResourceShare",
                                 "ram:AssociateResourceShare",
                                 "ram:DisassociateResourceShare",
-                                "ram:TagResourceShare",
-                                "ram:UntagResourceShare",
-                                "ram:AcceptResourceShareInvitations",
-                                "ram:EnableSharingWithAwsOrganizations"
+                                "ram:TagResource",
+                                "ram:UntagResource",
+                                "ram:AcceptResourceShareInvitation",
+                                "ram:EnableSharingWithAwsOrganization"
                             ],
                             "Resource": "*"
                         },
@@ -471,7 +471,7 @@
                 ]
             }
         },
-        
+
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Condition": "AviatrixIAMRoleNotExist",

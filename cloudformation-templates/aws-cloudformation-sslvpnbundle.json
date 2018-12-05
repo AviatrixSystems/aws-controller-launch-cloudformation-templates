@@ -78,7 +78,7 @@
             "Default": "t2.large",
             "AllowedValues": [
                 "t2.large",
-                
+
                 "m4.large",
                 "m4.xlarge",
                 "m4.2xlarge",
@@ -126,7 +126,7 @@
             "ap-northeast-1": { "Name": "ami-00759e7f" },
             "ap-northeast-2": { "Name": "ami-dbe64eb5" },
             "ap-south-1":     { "Name": "ami-0576546a" },
-            
+
             "sa-east-1":      { "Name": "ami-a1fba6cd" }
         }
     },
@@ -376,10 +376,10 @@
                                 "ram:UpdateResourceShare",
                                 "ram:AssociateResourceShare",
                                 "ram:DisassociateResourceShare",
-                                "ram:TagResourceShare",
-                                "ram:UntagResourceShare",
-                                "ram:AcceptResourceShareInvitations",
-                                "ram:EnableSharingWithAwsOrganizations"
+                                "ram:TagResource",
+                                "ram:UntagResource",
+                                "ram:AcceptResourceShareInvitation",
+                                "ram:EnableSharingWithAwsOrganization"
                             ],
                             "Resource": "*"
                         },
@@ -549,7 +549,7 @@
                 "Domain": "vpc"
             }
         },
-        
+
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {

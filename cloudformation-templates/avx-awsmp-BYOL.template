@@ -85,7 +85,7 @@
                 "m4.xlarge",
                 "m4.2xlarge",
                 "m4.4xlarge",
-                
+
                 "c4.large",
                 "c4.xlarge",
                 "c4.2xlarge",
@@ -383,10 +383,10 @@
                                 "ram:UpdateResourceShare",
                                 "ram:AssociateResourceShare",
                                 "ram:DisassociateResourceShare",
-                                "ram:TagResourceShare",
-                                "ram:UntagResourceShare",
-                                "ram:AcceptResourceShareInvitations",
-                                "ram:EnableSharingWithAwsOrganizations"
+                                "ram:TagResource",
+                                "ram:UntagResource",
+                                "ram:AcceptResourceShareInvitation",
+                                "ram:EnableSharingWithAwsOrganization"
                             ],
                             "Resource": "*"
                         },
@@ -477,7 +477,7 @@
                 ]
             }
         },
-        
+
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Condition": "AviatrixIAMRoleNotExist",
@@ -546,7 +546,7 @@
                 ]
             }
         },
-        
+
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "Properties": {
