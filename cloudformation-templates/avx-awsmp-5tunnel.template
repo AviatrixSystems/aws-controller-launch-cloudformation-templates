@@ -135,6 +135,7 @@
     "Resources": {
         "AviatrixRoleEC2": {
             "Type": "AWS::IAM::Role",
+            "DeletionPolicy" : "Retain",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "RoleName": "aviatrix-role-ec2",
@@ -160,6 +161,7 @@
 
         "AviatrixRoleApp": {
             "Type": "AWS::IAM::Role",
+            "DeletionPolicy" : "Retain",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "RoleName": "aviatrix-role-app",
@@ -196,6 +198,7 @@
 
         "CreateAviatrixAssumeRolePolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
+            "DeletionPolicy" : "Retain",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "ManagedPolicyName": "aviatrix-assume-role-policy",
@@ -230,6 +233,7 @@
 
         "CreateAviatrixAppPolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
+            "DeletionPolicy" : "Retain",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "ManagedPolicyName": "aviatrix-app-policy",
@@ -377,10 +381,10 @@
                                 "ram:UpdateResourceShare",
                                 "ram:AssociateResourceShare",
                                 "ram:DisassociateResourceShare",
-                                "ram:TagResourceShare",
-                                "ram:UntagResourceShare",
-                                "ram:AcceptResourceShareInvitations",
-                                "ram:EnableSharingWithAwsOrganizations"
+                                "ram:TagResource",
+                                "ram:UntagResource",
+                                "ram:AcceptResourceShareInvitation",
+                                "ram:EnableSharingWithAwsOrganization"
                             ],
                             "Resource": "*"
                         },
@@ -474,6 +478,7 @@
         
         "AviatrixInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
+            "DeletionPolicy" : "Retain",
             "Condition": "AviatrixIAMRoleNotExist",
             "Properties": {
                 "Path": "/",
@@ -543,6 +548,7 @@
 
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
+            "DeletionPolicy" : "Retain",
             "Properties": {
                 "InstanceId": {
                     "Ref": "AviatrixController"
