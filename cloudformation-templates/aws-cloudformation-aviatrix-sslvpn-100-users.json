@@ -130,7 +130,7 @@
             "ap-northeast-1": { "Name": "ami-933ad7ec" },
             "ap-northeast-2": { "Name": "ami-9669c0f8" },
             "ap-south-1":     { "Name": "ami-a91939c6" },
-            
+
             "sa-east-1":      { "Name": "ami-e2b4e68e" },
             "us-gov-west-1":  { "Name": "ami-ba9c0bdb" }
         }
@@ -219,7 +219,8 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "aws-marketplace:MeterUsage"
+                                "aws-marketplace:MeterUsage",
+                                "s3:GetBucketLocation"
                             ],
                             "Resource": "*"
                         }
@@ -347,7 +348,9 @@
                                 "ec2:ModifyInstanceCreditSpecification",
                                 "ec2:CreateNetworkAclEntry",
                                 "ec2:ReplaceNetworkAclEntry",
-                                "ec2:DeleteNetworkAclEntry"
+                                "ec2:DeleteNetworkAclEntry",
+                                "ec2:EnableVgwRoutePropagation",
+                                "ec2:DisableVgwRoutePropagation"
                             ],
                             "Resource": "*"
                         },
@@ -372,6 +375,24 @@
                                 "ec2:ModifyTransitGatewayVpcAttachment",
                                 "ec2:RejectTransitGatewayVpcAttachment",
                                 "ec2:ReplaceTransitGatewayRoute"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "ec2:DescribeInstances",
+                                "ec2:DescribeVolumes",
+                                "ec2:DescribeSnapshots",
+                                "ec2:StopInstances",
+                                "ec2:StartInstances",
+                                "ec2:CopySnapshot",
+                                "ec2:CreateSnapshot",
+                                "ec2:CreateVolume",
+                                "ec2:DeleteVolume",
+                                "ec2:DeleteSnapshot",
+                                "ec2:AttachVolume",
+                                "ec2:DetachVolume"
                             ],
                             "Resource": "*"
                         },
@@ -547,7 +568,7 @@
                 ]
             }
         },
-        
+
         "AviatrixEIP": {
             "Type": "AWS::EC2::EIP",
             "DeletionPolicy" : "Retain",
@@ -558,7 +579,7 @@
                 "Domain": "vpc"
             }
         },
-        
+
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
