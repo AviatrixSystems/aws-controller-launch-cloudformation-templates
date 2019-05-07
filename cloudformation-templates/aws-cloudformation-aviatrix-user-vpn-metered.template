@@ -486,9 +486,41 @@
                         {
                             "Effect": "Allow",
                             "Action": [
+                                "iam:DeletePolicyVersion",
+                                "iam:CreatePolicyVersion"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
                                 "guardduty:CreateDetector",
                                 "guardduty:DeleteDetector",
                                 "guardduty:UpdateDetector"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "globalaccelerator:CreateAccelerator",
+                                "globalaccelerator:CreateEndpointGroup",
+                                "globalaccelerator:CreateListener",
+                                "globalaccelerator:DeleteAccelerator",
+                                "globalaccelerator:DeleteEndpointGroup",
+                                "globalaccelerator:DeleteListener",
+                                "globalaccelerator:DescribeAccelerator",
+                                "globalaccelerator:DescribeAcceleratorAttributes",
+                                "globalaccelerator:DescribeEndpointGroup",
+                                "globalaccelerator:DescribeListener",
+                                "globalaccelerator:GetWaiter",
+                                "globalaccelerator:ListAccelerators",
+                                "globalaccelerator:ListEndpointGroups",
+                                "globalaccelerator:ListListeners",
+                                "globalaccelerator:UpdateAccelerator",
+                                "globalaccelerator:UpdateAcceleratorAttributes",
+                                "globalaccelerator:UpdateEndpointGroup",
+                                "globalaccelerator:UpdateListener"
                             ],
                             "Resource": "*"
                         }
