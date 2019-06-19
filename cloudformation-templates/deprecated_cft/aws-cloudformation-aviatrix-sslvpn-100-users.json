@@ -78,16 +78,16 @@
             "Default": "t2.large",
             "AllowedValues": [
                 "t2.large",
-                
+                "t2.xlarge",
+                "t2.2xlarge",
+
                 "m4.large",
                 "m4.xlarge",
                 "m4.2xlarge",
-                "m4.4xlarge",
 
                 "c4.large",
                 "c4.xlarge",
-                "c4.2xlarge",
-                "c4.4xlarge"
+                "c4.2xlarge"
             ],
             "Description": "Select an instance size for the controller. Default is t2.large"
         }
@@ -103,31 +103,36 @@
             ]
         },
         "T2SeriesTrue": {
-           "Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]
+            "Fn::Or": [
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.2xlarge"]}
+            ]
         }
     },
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-689b1517" },
-            "us-east-2":      { "Name": "ami-7ffcc11a" },
-            "us-west-1":      { "Name": "ami-5cf0ee3c" },
-            "us-west-2":      { "Name": "ami-f8562680" },
+            "us-east-1":      { "Name": "ami-abd66dd4" },
+            "us-east-2":      { "Name": "ami-d8a496bd" },
+            "us-west-1":      { "Name": "ami-077b6467" },
+            "us-west-2":      { "Name": "ami-af691dd7" },
 
-            "ca-central-1":   { "Name": "ami-7a9c1c1e" },
+            "ca-central-1":   { "Name": "ami-8acd4dee" },
 
-            "eu-central-1":   { "Name": "ami-91d1fc7a" },
-            "eu-west-1":      { "Name": "ami-91a097e8" },
-            "eu-west-2":      { "Name": "ami-f65dbf91" },
-            "eu-west-3":      { "Name": "ami-788b3a05" },
+            "eu-central-1":   { "Name": "ami-fdf0d016" },
+            "eu-west-1":      { "Name": "ami-dde5cda4" },
+            "eu-west-2":      { "Name": "ami-bbe002dc" },
+            "eu-west-3":      { "Name": "ami-a3a716de" },
 
-            "ap-southeast-1": { "Name": "ami-dbbe8aa7" },
-            "ap-southeast-2": { "Name": "ami-d7b761b5" },
-            "ap-northeast-1": { "Name": "ami-00759e7f" },
-            "ap-northeast-2": { "Name": "ami-dbe64eb5" },
-            "ap-south-1":     { "Name": "ami-0576546a" },
-            
-            "sa-east-1":      { "Name": "ami-a1fba6cd" }
+            "ap-southeast-1": { "Name": "ami-41b79f3d" },
+            "ap-southeast-2": { "Name": "ami-29ce1a4b" },
+            "ap-northeast-1": { "Name": "ami-933ad7ec" },
+            "ap-northeast-2": { "Name": "ami-9669c0f8" },
+            "ap-south-1":     { "Name": "ami-a91939c6" },
+
+            "sa-east-1":      { "Name": "ami-e2b4e68e" },
+            "us-gov-west-1":  { "Name": "ami-ba9c0bdb" }
         }
     },
 
@@ -157,7 +162,6 @@
                 "Path": "/"
             }
         },
-
         "AviatrixRoleApp": {
             "Type": "AWS::IAM::Role",
             "DeletionPolicy" : "Retain",
@@ -194,7 +198,6 @@
                 "Path": "/"
             }
         },
-
         "CreateAviatrixAssumeRolePolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
             "DeletionPolicy" : "Retain",
@@ -216,7 +219,8 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "aws-marketplace:MeterUsage"
+                                "aws-marketplace:MeterUsage",
+                                "s3:GetBucketLocation"
                             ],
                             "Resource": "*"
                         }
@@ -344,7 +348,9 @@
                                 "ec2:ModifyInstanceCreditSpecification",
                                 "ec2:CreateNetworkAclEntry",
                                 "ec2:ReplaceNetworkAclEntry",
-                                "ec2:DeleteNetworkAclEntry"
+                                "ec2:DeleteNetworkAclEntry",
+                                "ec2:EnableVgwRoutePropagation",
+                                "ec2:DisableVgwRoutePropagation"
                             ],
                             "Resource": "*"
                         },
@@ -369,6 +375,24 @@
                                 "ec2:ModifyTransitGatewayVpcAttachment",
                                 "ec2:RejectTransitGatewayVpcAttachment",
                                 "ec2:ReplaceTransitGatewayRoute"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "ec2:DescribeInstances",
+                                "ec2:DescribeVolumes",
+                                "ec2:DescribeSnapshots",
+                                "ec2:StopInstances",
+                                "ec2:StartInstances",
+                                "ec2:CopySnapshot",
+                                "ec2:CreateSnapshot",
+                                "ec2:CreateVolume",
+                                "ec2:DeleteVolume",
+                                "ec2:DeleteSnapshot",
+                                "ec2:AttachVolume",
+                                "ec2:DetachVolume"
                             ],
                             "Resource": "*"
                         },
@@ -555,7 +579,7 @@
                 "Domain": "vpc"
             }
         },
-        
+
         "AviatrixSG": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
