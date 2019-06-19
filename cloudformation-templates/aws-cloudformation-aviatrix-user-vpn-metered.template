@@ -251,8 +251,8 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "ec2:Get*",
                                 "ec2:Describe*",
+                                "ec2:Get*",
                                 "ec2:Search*",
                                 "elasticloadbalancing:Describe*",
                                 "route53:List*",
@@ -275,72 +275,31 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "ec2:RunInstances"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": "ec2:RunInstances",
-                            "Resource": "arn:aws:ec2:*:*:image/ami-*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "ec2:DeleteSecurityGroup",
-                                "ec2:RevokeSecurityGroupEgress",
-                                "ec2:RevokeSecurityGroupIngress",
-                                "ec2:AuthorizeSecurityGroup*",
-                                "ec2:CreateSecurityGroup",
-                                "ec2:AssociateRouteTable",
-                                "ec2:CreateRoute",
-                                "ec2:CreateRouteTable",
-                                "ec2:DeleteRoute",
-                                "ec2:DeleteRouteTable",
-                                "ec2:DisassociateRouteTable",
-                                "ec2:ReplaceRoute",
-                                "ec2:ReplaceRouteTableAssociation"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "ec2:AllocateAddress",
-                                "ec2:AssociateAddress",
-                                "ec2:DisassociateAddress",
-                                "ec2:ReleaseAddress",
-                                "ec2:AssignPrivateIpAddresses",
-                                "ec2:AttachNetworkInterface",
-                                "ec2:CreateNetworkInterface",
-                                "ec2:DeleteNetworkInterface",
-                                "ec2:DetachNetworkInterface",
-                                "ec2:ModifyNetworkInterfaceAttribute",
-                                "ec2:ResetNetworkInterfaceAttribute",
-                                "ec2:UnassignPrivateIpAddresses",
-                                "ec2:ModifyInstanceAttribute",
-                                "ec2:MonitorInstances",
-                                "ec2:RebootInstances",
-                                "ec2:ReportInstanceStatus",
-                                "ec2:ResetInstanceAttribute",
-                                "ec2:StartInstances",
-                                "ec2:StopInstances",
-                                "ec2:TerminateInstances",
-                                "ec2:UnmonitorInstances",
-                                "ec2:AttachInternetGateway",
-                                "ec2:CreateInternetGateway",
-                                "ec2:DeleteInternetGateway",
-                                "ec2:DetachInternetGateway",
-                                "ec2:CreateKeyPair",
-                                "ec2:DeleteKeyPair",
-                                "ec2:CreateSubnet",
-                                "ec2:DeleteSubnet",
-                                "ec2:ModifySubnetAttribute",
-                                "ec2:CreateTags",
-                                "ec2:DeleteTags",
                                 "ec2:CreateVpc",
                                 "ec2:DeleteVpc",
                                 "ec2:ModifyVpcAttribute",
+                                "ec2:CreateNetworkAclEntry",
+                                "ec2:ReplaceNetworkAclEntry",
+                                "ec2:DeleteNetworkAclEntry",
+                                "ec2:CreateSubnet",
+                                "ec2:DeleteSubnet",
+                                "ec2:ModifySubnetAttribute",
+                                "ec2:*InternetGateway*",
+                                "ec2:*Route*",
+                                "ec2:*Instance*",
+                                "ec2:*SecurityGroup*",
+                                "ec2:*Address*",
+                                "ec2:*NetworkInterface*",
+                                "ec2:CreateKeyPair",
+                                "ec2:DeleteKeyPair",
+                                "ec2:CreateTags",
+                                "ec2:DeleteTags"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
                                 "ec2:CreateCustomerGateway",
                                 "ec2:DeleteCustomerGateway",
                                 "ec2:CreateVpnConnection",
@@ -348,10 +307,6 @@
                                 "ec2:CreateVpcPeeringConnection",
                                 "ec2:AcceptVpcPeeringConnection",
                                 "ec2:DeleteVpcPeeringConnection",
-                                "ec2:ModifyInstanceCreditSpecification",
-                                "ec2:CreateNetworkAclEntry",
-                                "ec2:ReplaceNetworkAclEntry",
-                                "ec2:DeleteNetworkAclEntry",
                                 "ec2:EnableVgwRoutePropagation",
                                 "ec2:DisableVgwRoutePropagation"
                             ],
@@ -373,29 +328,11 @@
                                 "ec2:DisableTransitGatewayRouteTablePropagation",
                                 "ec2:DisassociateTransitGatewayRouteTable",
                                 "ec2:EnableTransitGatewayRouteTablePropagation",
-                                "ec2:EnableRoutePropagation",
                                 "ec2:ExportTransitGatewayRoutes",
                                 "ec2:ModifyTransitGatewayVpcAttachment",
                                 "ec2:RejectTransitGatewayVpcAttachment",
-                                "ec2:ReplaceTransitGatewayRoute"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "ec2:DescribeInstances",
-                                "ec2:DescribeVolumes",
-                                "ec2:DescribeSnapshots",
-                                "ec2:StopInstances",
-                                "ec2:StartInstances",
-                                "ec2:CopySnapshot",
-                                "ec2:CreateSnapshot",
-                                "ec2:CreateVolume",
-                                "ec2:DeleteVolume",
-                                "ec2:DeleteSnapshot",
-                                "ec2:AttachVolume",
-                                "ec2:DetachVolume"
+                                "ec2:ReplaceTransitGatewayRoute",
+                                "ec2:EnableRoutePropagation"
                             ],
                             "Resource": "*"
                         },
@@ -417,40 +354,13 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-                                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                                "elasticloadbalancing:ConfigureHealthCheck",
-                                "elasticloadbalancing:CreateLoadBalancer*",
-                                "elasticloadbalancing:DeleteLoadBalancer*",
-                                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                                "elasticloadbalancing:ModifyLoadBalancerAttributes",
-                                "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
-                                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-                                "elasticloadbalancing:CreateTargetGroup",
-                                "elasticloadbalancing:DescribeTargetGroups",
-                                "elasticloadbalancing:DeleteTargetGroup",
-                                "elasticloadbalancing:CreateListener",
-                                "elasticloadbalancing:DescribeListeners",
-                                "elasticloadbalancing:DeleteListener",
-                                "elasticloadbalancing:RegisterTargets",
-                                "elasticloadbalancing:DeregisterTargets"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "route53:ChangeResourceRecordSets",
-                                "route53:CreateHostedZone",
-                                "route53:DeleteHostedZone"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "s3:PutObject",
-                                "s3:DeleteObject"
+                                "directconnect:CreateDirectConnectGateway",
+                                "directconnect:CreateDirectConnectGatewayAssociation",
+                                "directconnect:CreateDirectConnectGatewayAssociationProposal",
+                                "directconnect:DeleteDirectConnectGateway",
+                                "directconnect:DeleteDirectConnectGatewayAssociation",
+                                "directconnect:DeleteDirectConnectGatewayAssociationProposal",
+                                "directconnect:AcceptDirectConnectGatewayAssociationProposal"
                             ],
                             "Resource": "*"
                         },
@@ -468,6 +378,17 @@
                                 "sqs:SendMessage",
                                 "sqs:SetQueueAttributes",
                                 "sqs:TagQueue"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:CreateBucket",
+                                "s3:DeleteBucket",
+                                "s3:ListBucket",
+                                "s3:PutObject",
+                                "s3:DeleteObject"
                             ],
                             "Resource": "*"
                         },
@@ -494,33 +415,12 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "guardduty:CreateDetector",
-                                "guardduty:DeleteDetector",
-                                "guardduty:UpdateDetector"
-                            ],
-                            "Resource": "*"
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "globalaccelerator:CreateAccelerator",
-                                "globalaccelerator:CreateEndpointGroup",
-                                "globalaccelerator:CreateListener",
-                                "globalaccelerator:DeleteAccelerator",
-                                "globalaccelerator:DeleteEndpointGroup",
-                                "globalaccelerator:DeleteListener",
-                                "globalaccelerator:DescribeAccelerator",
-                                "globalaccelerator:DescribeAcceleratorAttributes",
-                                "globalaccelerator:DescribeEndpointGroup",
-                                "globalaccelerator:DescribeListener",
-                                "globalaccelerator:GetWaiter",
-                                "globalaccelerator:ListAccelerators",
-                                "globalaccelerator:ListEndpointGroups",
-                                "globalaccelerator:ListListeners",
-                                "globalaccelerator:UpdateAccelerator",
-                                "globalaccelerator:UpdateAcceleratorAttributes",
-                                "globalaccelerator:UpdateEndpointGroup",
-                                "globalaccelerator:UpdateListener"
+                                "elasticloadbalancing:*",
+                                "route53:ChangeResourceRecordSets",
+                                "ec2:*Volume*",
+                                "ec2:*Snapshot*",
+                                "guardduty:*",
+                                "globalaccelerator:*"
                             ],
                             "Resource": "*"
                         }
