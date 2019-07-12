@@ -79,13 +79,19 @@
             "AllowedValues": [
                 "t2.large",
                 "t2.xlarge",
+                "t2.2xlarge",
 
-                "m4.large",
-                "m4.xlarge",
+                "t3.large",
+                "t3.xlarge",
+                "t3.2xlarge",
 
                 "c4.large",
                 "c4.xlarge",
-                "c4.2xlarge"
+                "c4.2xlarge",
+
+                "c5.large",
+                "c5.xlarge",
+                "c5.2xlarge"
             ],
             "Description": "Select an instance size for the controller. Default is t2.large"
         }
@@ -110,25 +116,25 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-824bdcfd" },
-            "us-east-2":      { "Name": "ami-c9a39eac" },
-            "us-west-1":      { "Name": "ami-1a332a7a" },
-            "us-west-2":      { "Name": "ami-4a4d3f32" },
+            "us-east-1":      { "Name": "ami-0cedf3b262b5cd819" },
+            "us-east-2":      { "Name": "ami-0dbd2b24bf10af61c" },
+            "us-west-1":      { "Name": "ami-0a8e88cfb3eb096fe" },
+            "us-west-2":      { "Name": "ami-0f35ddfdfbe513822" },
 
-            "ca-central-1":   { "Name": "ami-504bcb34" },
+            "ca-central-1":   { "Name": "ami-0681be241cbf6c57f" },
 
-            "eu-central-1":   { "Name": "ami-ebfdd200" },
-            "eu-west-1":      { "Name": "ami-f6cefe8f" },
-            "eu-west-2":      { "Name": "ami-c4f71aa3" },
-            "eu-west-3":      { "Name": "ami-e78e3f9a" },
+            "eu-central-1":   { "Name": "ami-097d6525625a14fd5" },
+            "eu-west-1":      { "Name": "ami-09eb8379ded8cf49b" },
+            "eu-west-2":      { "Name": "ami-00b9575dcd74f2931" },
+            "eu-west-3":      { "Name": "ami-047ff80d631de8f0b" },
 
-            "ap-southeast-1": { "Name": "ami-d87243a4" },
-            "ap-southeast-2": { "Name": "ami-5b944539" },
-            "ap-northeast-1": { "Name": "ami-123bcc6d" },
-            "ap-northeast-2": { "Name": "ami-02b1196c" },
-            "ap-south-1":     { "Name": "ami-6f94b600" },
-
-            "sa-east-1":      { "Name": "ami-fe84d892" }
+            "ap-southeast-1": { "Name": "ami-0c017a6a429210e26" },
+            "ap-southeast-2": { "Name": "ami-0e2157909b24d0a37" },
+            "ap-northeast-1": { "Name": "ami-0cc60ff3b54ae66a3" },
+            "ap-northeast-2": { "Name": "ami-04ca2c656aecf8768" },
+            "ap-south-1":     { "Name": "ami-08a22e1620c5ab3fa" },
+            "sa-east-1":      { "Name": "ami-0ba041f9e2a611437" },
+            "us-gov-west-1":  { "Name": "ami-48b7f029" }
         }
     },
 
@@ -460,7 +466,7 @@
                     {
                         "DeviceName": "/dev/sda1",
                         "Ebs": {
-                            "VolumeSize": "20",
+                            "VolumeSize": "32",
                             "VolumeType": "gp2"
                         }
                     }
