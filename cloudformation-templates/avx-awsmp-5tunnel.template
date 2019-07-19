@@ -116,25 +116,28 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-0cedf3b262b5cd819" },
-            "us-east-2":      { "Name": "ami-0dbd2b24bf10af61c" },
-            "us-west-1":      { "Name": "ami-0a8e88cfb3eb096fe" },
-            "us-west-2":      { "Name": "ami-0f35ddfdfbe513822" },
+            "us-east-1":      { "Name": "ami-0cedf3b262b5cd819", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-0dbd2b24bf10af61c", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-0a8e88cfb3eb096fe", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-0f35ddfdfbe513822", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-0681be241cbf6c57f" },
+            "ca-central-1":   { "Name": "ami-0681be241cbf6c57f", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-097d6525625a14fd5" },
-            "eu-west-1":      { "Name": "ami-09eb8379ded8cf49b" },
-            "eu-west-2":      { "Name": "ami-00b9575dcd74f2931" },
-            "eu-west-3":      { "Name": "ami-047ff80d631de8f0b" },
+            "eu-central-1":   { "Name": "ami-097d6525625a14fd5", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-09eb8379ded8cf49b", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-00b9575dcd74f2931", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-047ff80d631de8f0b", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-4efd7630",          "Alias": "Stockholm" },
 
-            "ap-southeast-1": { "Name": "ami-0c017a6a429210e26" },
-            "ap-southeast-2": { "Name": "ami-0e2157909b24d0a37" },
-            "ap-northeast-1": { "Name": "ami-0cc60ff3b54ae66a3" },
-            "ap-northeast-2": { "Name": "ami-04ca2c656aecf8768" },
-            "ap-south-1":     { "Name": "ami-08a22e1620c5ab3fa" },
-            "sa-east-1":      { "Name": "ami-0ba041f9e2a611437" },
-            "us-gov-west-1":  { "Name": "ami-48b7f029" }
+            "ap-southeast-1": { "Name": "ami-0c017a6a429210e26", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-0e2157909b24d0a37", "Alias": "Sydney" },
+            "ap-northeast-1": { "Name": "ami-0cc60ff3b54ae66a3", "Alias": "Tokyo" },
+            "ap-northeast-2": { "Name": "ami-04ca2c656aecf8768", "Alias": "Seoul" },
+            "ap-east-1":      { "Name": "ami-b94b30c8",          "Alias": "Hong Kong" },
+            "ap-south-1":     { "Name": "ami-08a22e1620c5ab3fa", "Alias": "Mumbai" },
+
+            "sa-east-1":      { "Name": "ami-0ba041f9e2a611437", "Alias": "South America-Sao Paulo" },
+            "us-gov-west-1":  { "Name": "ami-48b7f029",          "Alias": "AWS Gov West 1" }
         }
     },
 
