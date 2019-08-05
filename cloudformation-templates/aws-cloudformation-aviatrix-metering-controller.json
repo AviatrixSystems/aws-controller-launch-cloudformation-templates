@@ -117,27 +117,27 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-df74f6a0", "Alias": "Virginia" },
-            "us-east-2":      { "Name": "ami-a72c11c2", "Alias": "Ohio" },
-            "us-west-1":      { "Name": "ami-e3170983", "Alias": "California" },
-            "us-west-2":      { "Name": "ami-1f770667", "Alias": "Oregon" },
+            "us-east-1":      { "Name": "ami-087b5ab4feb053b4b", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-0bc1db3a5b89c6aef", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-0a928ae10544ec78e", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-0f5b26bac60280d69", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-8d8707e9", "Alias": "Canada-Central" },
+            "ca-central-1":   { "Name": "ami-031442f061af55923", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-d9bf9d32", "Alias": "Frankfurt" },
-            "eu-west-1":      { "Name": "ami-f227138b", "Alias": "Ireland" },
-            "eu-west-2":      { "Name": "ami-a06587c7", "Alias": "London" },
-            "eu-west-3":      { "Name": "ami-339e2f4e", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-xxxxxxxx", "Alias": "Stockholm" },
+            "eu-central-1":   { "Name": "ami-0cf0c16d58a50f19b", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-0301c0164e6deb6df", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-04b5c38db962b3c13", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-0a11977b030622939", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-be961dc0",          "Alias": "Stockholm" },
 
-            "ap-southeast-1": { "Name": "ami-8fcbfef3", "Alias": "Singapore" },
-            "ap-southeast-2": { "Name": "ami-e90ed98b", "Alias": "Sydney" },
-            "ap-northeast-1": { "Name": "ami-358f674a", "Alias": "Tokyo" },
-            "ap-northeast-2": { "Name": "ami-cc08a1a2", "Alias": "Seoul" },
-            "ap-east-1":      { "Name": "ami-xxxxxxxx",          "Alias": "Hong Kong" },
-            "ap-south-1":     { "Name": "ami-ccc4e7a3", "Alias": "Mumbai" },
+            "ap-southeast-1": { "Name": "ami-02ae4a694e26953b2", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-06773bff73422d61d", "Alias": "Sydney" },
+            "ap-northeast-1": { "Name": "ami-048dff200571b34fd", "Alias": "Tokyo" },
+            "ap-northeast-2": { "Name": "ami-0cb08d1ebcce1495f", "Alias": "Seoul" },
+            "ap-east-1":      { "Name": "ami-05b4cf74",          "Alias": "Hong Kong" },
+            "ap-south-1":     { "Name": "ami-09b9ca158a576fa9f", "Alias": "Mumbai" },
 
-            "sa-east-1":      { "Name": "ami-1a90cd76", "Alias": "South America-Sao Paulo" },
+            "sa-east-1":      { "Name": "ami-0f23734bcd9d53cd8", "Alias": "South America-Sao Paulo" },
             "us-gov-west-1":  { "Name": "ami-xxxxxxxx",          "Alias": "AWS Gov West 1" }
         }
     },
@@ -470,7 +470,7 @@
                     {
                         "DeviceName": "/dev/sda1",
                         "Ebs": {
-                            "VolumeSize": "20",
+                            "VolumeSize": "32",
                             "VolumeType": "gp2"
                         }
                     }
