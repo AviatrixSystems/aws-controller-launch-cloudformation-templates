@@ -470,7 +470,7 @@
                     {
                         "DeviceName": "/dev/sda1",
                         "Ebs": {
-                            "VolumeSize": "20",
+                            "VolumeSize": "32",
                             "VolumeType": "gp2"
                         }
                     }
