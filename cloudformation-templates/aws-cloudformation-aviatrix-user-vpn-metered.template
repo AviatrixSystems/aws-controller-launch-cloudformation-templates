@@ -138,6 +138,7 @@
             "ap-south-1":     { "Name": "ami-0282c5fba757db1a9", "Alias": "Mumbai" },
 
             "sa-east-1":      { "Name": "ami-028d1f3f661679687", "Alias": "South America-Sao Paulo" },
+            "us-gov-east-1":  { "Name": "ami-826382f3",          "Alias": "AWS Gov East 1" },
             "us-gov-west-1":  { "Name": "ami-45226424",          "Alias": "AWS Gov West 1" }
         }
     },
