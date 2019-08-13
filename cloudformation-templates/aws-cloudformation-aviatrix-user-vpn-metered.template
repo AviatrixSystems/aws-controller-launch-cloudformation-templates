@@ -124,20 +124,22 @@
 
             "ca-central-1":   { "Name": "ami-023ebbb416d884192", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-023ebbb416d884192", "Alias": "Frankfurt" },
+            "eu-central-1":   { "Name": "ami-095e72639fb95cc04", "Alias": "Frankfurt" },
             "eu-west-1":      { "Name": "ami-0d36ea83c80d84db3", "Alias": "Ireland" },
             "eu-west-2":      { "Name": "ami-05c77ad4e031848e1", "Alias": "London" },
             "eu-west-3":      { "Name": "ami-0fbeedf430ffc62a1", "Alias": "Paris" },
             "eu-north-1":     { "Name": "ami-408f043e",          "Alias": "Stockholm" },
 
+            "ap-east-1":      { "Name": "ami-d8413aa9",          "Alias": "Hong Kong" },
             "ap-southeast-1": { "Name": "ami-03504c5cfb9481c48", "Alias": "Singapore" },
             "ap-southeast-2": { "Name": "ami-0bdc267f362ab8d97", "Alias": "Sydney" },
             "ap-northeast-1": { "Name": "ami-0753309521b3cf93c", "Alias": "Tokyo" },
             "ap-northeast-2": { "Name": "ami-03b5e6486f693fe4f", "Alias": "Seoul" },
-            "ap-east-1":      { "Name": "ami-xxxxxxxx",          "Alias": "Hong Kong" },
             "ap-south-1":     { "Name": "ami-0282c5fba757db1a9", "Alias": "Mumbai" },
 
             "sa-east-1":      { "Name": "ami-028d1f3f661679687", "Alias": "South America-Sao Paulo" },
+            "me-south-1":     { "Name": "ami-057dfb7f999f7689c", "Alias": "Middle East Bahrain" },
+            "us-gov-east-1":  { "Name": "ami-826382f3",          "Alias": "AWS Gov East 1" },
             "us-gov-west-1":  { "Name": "ami-45226424",          "Alias": "AWS Gov West 1" }
         }
     },
@@ -186,7 +188,9 @@
                                         "Fn::Join": [
                                             "",
                                             [
-                                                "arn:aws:iam::",
+                                                "arn:",
+                                                { "Ref" : "AWS::Partition" },
+                                                ":iam::",
                                                 {
                                                     "Ref": "AWS::AccountId"
                                                 },
@@ -222,7 +226,16 @@
                             "Action": [
                                 "sts:AssumeRole"
                             ],
-                            "Resource": "arn:aws:iam::*:role/aviatrix-*"
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:",
+                                        { "Ref" : "AWS::Partition" },
+                                        ":iam::*:role/aviatrix-*"
+                                    ]
+                                ]
+                            }
                         },
                         {
                             "Effect": "Allow",

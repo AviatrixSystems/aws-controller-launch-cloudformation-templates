@@ -117,26 +117,30 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-0e507d7959e6369dd" },
-            "us-east-2":      { "Name": "ami-xxxxx" },
-            "us-west-1":      { "Name": "ami-xxxxx" },
-            "us-west-2":      { "Name": "ami-05becf1daa94d501f" },
+            "us-east-1":      { "Name": "ami-0e507d7959e6369dd", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-xxx", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-xxx", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-05becf1daa94d501f", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-xxxxx" },
+            "ca-central-1":   { "Name": "ami-xxx", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-xxxxx" },
-            "eu-west-1":      { "Name": "ami-xxxxx" },
-            "eu-west-2":      { "Name": "ami-xxxxx" },
-            "eu-west-3":      { "Name": "ami-xxxxx" },
+            "eu-central-1":   { "Name": "ami-xxx", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-xxx", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-xxx", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-xxx", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-xxx", "Alias": "Stockholm" },
 
-            "ap-southeast-1": { "Name": "ami-xxxxx" },
-            "ap-southeast-2": { "Name": "ami-xxxxx" },
-            "ap-northeast-1": { "Name": "ami-xxxxx" },
-            "ap-northeast-2": { "Name": "ami-xxxxx" },
-            "ap-south-1":     { "Name": "ami-xxxxx" },
+            "ap-east-1":      { "Name": "ami-xxx", "Alias": "Hong Kong" },
+            "ap-southeast-1": { "Name": "ami-xxx", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-xxx", "Alias": "Sydney" },
+            "ap-northeast-2": { "Name": "ami-xxx", "Alias": "Seoul" },
+            "ap-northeast-1": { "Name": "ami-xxx", "Alias": "Tokyo" },
+            "ap-south-1":     { "Name": "ami-xxx", "Alias": "Mumbai" },
 
-            "sa-east-1":      { "Name": "ami-xxxxx" },
-            "us-gov-west-1":  { "Name": "ami-xxxxx" }
+            "sa-east-1":      { "Name": "ami-xxx", "Alias": "South America-Sao Paulo" },
+            "me-south-1":     { "Name": "ami-xxx", "Alias": "Middle East Bahrain" },
+            "us-gov-east-1":  { "Name": "ami-xxx", "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-xxx", "Alias": "AWS Gov West 1" }
         }
     },
 
@@ -184,7 +188,9 @@
                                         "Fn::Join": [
                                             "",
                                             [
-                                                "arn:aws:iam::",
+                                                "arn:",
+                                                { "Ref" : "AWS::Partition" },
+                                                ":iam::",
                                                 {
                                                     "Ref": "AWS::AccountId"
                                                 },
@@ -220,7 +226,16 @@
                             "Action": [
                                 "sts:AssumeRole"
                             ],
-                            "Resource": "arn:aws:iam::*:role/aviatrix-*"
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:",
+                                        { "Ref" : "AWS::Partition" },
+                                        ":iam::*:role/aviatrix-*"
+                                    ]
+                                ]
+                            }
                         },
                         {
                             "Effect": "Allow",
