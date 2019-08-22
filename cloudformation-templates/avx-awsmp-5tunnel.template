@@ -137,8 +137,8 @@
             "ap-south-1":     { "Name": "ami-08a22e1620c5ab3fa", "Alias": "Mumbai" },
 
             "sa-east-1":      { "Name": "ami-0ba041f9e2a611437", "Alias": "South America-Sao Paulo" },
-            "me-south-1":     { "Name": "ami-AWS_has_NOT_update_yet", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-AWS_has_NOT_update_yet", "Alias": "AWS Gov East 1" },
+            "me-south-1":     { "Name": "ami-NOT_available_yet", "Alias": "Middle East Bahrain" },
+            "us-gov-east-1":  { "Name": "ami-739a7a02",          "Alias": "AWS Gov East 1" },
             "us-gov-west-1":  { "Name": "ami-48b7f029",          "Alias": "AWS Gov West 1" }
         }
     },
