@@ -75,7 +75,7 @@
         },
         "InstanceTypeParam": {
             "Type": "String",
-            "Default": "t2.large",
+            "Default": "t3.large",
             "AllowedValues": [
                 "t2.large",
                 "t2.xlarge",
@@ -93,7 +93,7 @@
                 "c5.xlarge",
                 "c5.2xlarge"
             ],
-            "Description": "Select an instance size for the controller. Default is t2.large"
+            "Description": "Select an instance size for the controller. Default is t3.large"
         }
     },
 
@@ -117,30 +117,30 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-02465f499ff5092e1", "Alias": "Virginia" },
-            "us-east-2":      { "Name": "ami-0861f8a0e35a19b0b", "Alias": "Ohio" },
-            "us-west-1":      { "Name": "ami-0cf70ae96639f0057", "Alias": "California" },
-            "us-west-2":      { "Name": "ami-0d1499f297ecddea6", "Alias": "Oregon" },
+            "us-east-1":      { "Name": "ami-0d7263d5d4871e9e7", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-04f98decb12358a88", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-0156478ef6fdd19f0", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-09f328d130f23ad6b", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-08ca66ca024bbce49", "Alias": "Canada-Central" },
+            "ca-central-1":   { "Name": "ami-08f457f76c68c6c87", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-0f27d29114cb3e116", "Alias": "Frankfurt" },
-            "eu-west-1":      { "Name": "ami-08d86496a8dcb9d33", "Alias": "Ireland" },
-            "eu-west-2":      { "Name": "ami-001bdb44b4e47313a", "Alias": "London" },
-            "eu-west-3":      { "Name": "ami-01838788ed74ad98d", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-b2f378cc",          "Alias": "Stockholm" },
+            "eu-central-1":   { "Name": "ami-00629d1810b54c3e4", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-0fe8515a699fdf040", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-0e727ff47bacc8203", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-09d513d249417723e", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-086f3708cda52713c", "Alias": "Stockholm" },
 
-            "ap-east-1":      { "Name": "ami-9a552eeb",          "Alias": "Hong Kong" },
-            "ap-southeast-1": { "Name": "ami-0a9c6a012c943b907", "Alias": "Singapore" },
-            "ap-southeast-2": { "Name": "ami-0e4d20f09c0318644", "Alias": "Sydney" },
-            "ap-northeast-2": { "Name": "ami-0971c3882816c1bc4", "Alias": "Seoul" },
-            "ap-northeast-1": { "Name": "ami-0d5e9b905bf30d2d3", "Alias": "Tokyo" },
-            "ap-south-1":     { "Name": "ami-00c1c3e9df7b9ddd4", "Alias": "Mumbai" },
+            "ap-east-1":      { "Name": "ami-07986a03c811ce483", "Alias": "Hong Kong" },
+            "ap-southeast-1": { "Name": "ami-0c75640cc661277ba", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-0b790836acd673520", "Alias": "Sydney" },
+            "ap-northeast-2": { "Name": "ami-0fb33e49410f1d7fc", "Alias": "Seoul" },
+            "ap-northeast-1": { "Name": "ami-00d0f2f15c0868668", "Alias": "Tokyo" },
+            "ap-south-1":     { "Name": "ami-024d28b578b36467a", "Alias": "Mumbai" },
 
-            "sa-east-1":      { "Name": "ami-0696240d0fc2ecc53", "Alias": "South America-Sao Paulo" },
+            "sa-east-1":      { "Name": "ami-0cf2883cc2a6ff514", "Alias": "South America-Sao Paulo" },
             "me-south-1":     { "Name": "ami-NOT_available_yet", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-fd98788c",          "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-a9afe8c8",          "Alias": "AWS Gov West 1" }
+            "us-gov-east-1":  { "Name": "ami-a52dcfd4",          "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-83cbeae2",          "Alias": "AWS Gov West 1" }
         }
     },
 
@@ -286,7 +286,9 @@
                                 "guardduty:Get*",
                                 "guardduty:List*",
                                 "ram:Get*",
-                                "ram:List*"
+                                "ram:List*",
+                                "networkmanager:Get*",
+                                "networkmanager:List*"
                             ],
                             "Resource": "*"
                         },
@@ -299,6 +301,8 @@
                                 "ec2:CreateNetworkAclEntry",
                                 "ec2:ReplaceNetworkAclEntry",
                                 "ec2:DeleteNetworkAclEntry",
+                                "ec2:AssociateVpcCidrBlock",
+                                "ec2:AssociateSubnetCidrBlock",
                                 "ec2:CreateSubnet",
                                 "ec2:DeleteSubnet",
                                 "ec2:ModifySubnetAttribute",
@@ -437,8 +441,10 @@
                                 "route53:ChangeResourceRecordSets",
                                 "ec2:*Volume*",
                                 "ec2:*Snapshot*",
+                                "ec2:*TransitGatewayPeeringAttachment",
                                 "guardduty:*",
-                                "globalaccelerator:*"
+                                "globalaccelerator:*",
+                                "networkmanager:*"
                             ],
                             "Resource": "*"
                         }
