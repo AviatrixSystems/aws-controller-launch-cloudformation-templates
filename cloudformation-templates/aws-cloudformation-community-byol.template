@@ -128,19 +128,18 @@
             "eu-west-1":      { "Name": "ami-xxx", "Alias": "Ireland" },
             "eu-west-2":      { "Name": "ami-xxx", "Alias": "London" },
             "eu-west-3":      { "Name": "ami-xxx", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-xxx", "Alias": "Stockholm" },
+            "eu-north-1":     { "Name": "ami-xxx",          "Alias": "Stockholm" },
 
-            "ap-east-1":      { "Name": "ami-xxx", "Alias": "Hong Kong" },
             "ap-southeast-1": { "Name": "ami-xxx", "Alias": "Singapore" },
             "ap-southeast-2": { "Name": "ami-xxx", "Alias": "Sydney" },
-            "ap-northeast-2": { "Name": "ami-xxx", "Alias": "Seoul" },
             "ap-northeast-1": { "Name": "ami-xxx", "Alias": "Tokyo" },
+            "ap-northeast-2": { "Name": "ami-xxx", "Alias": "Seoul" },
+            "ap-east-1":      { "Name": "ami-xxx",          "Alias": "Hong Kong" },
             "ap-south-1":     { "Name": "ami-xxx", "Alias": "Mumbai" },
 
             "sa-east-1":      { "Name": "ami-xxx", "Alias": "South America-Sao Paulo" },
-            "me-south-1":     { "Name": "ami-xxx", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-xxx", "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-xxx", "Alias": "AWS Gov West 1" }
+            "us-gov-east-1":  { "Name": "ami-xxx",          "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-xxx",          "Alias": "AWS Gov West 1" }
         }
     },
 
