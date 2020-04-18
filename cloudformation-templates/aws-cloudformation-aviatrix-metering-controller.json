@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Aviatrix Systems - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
+    "Description": "Aviatrix Systems - <Metered> - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [

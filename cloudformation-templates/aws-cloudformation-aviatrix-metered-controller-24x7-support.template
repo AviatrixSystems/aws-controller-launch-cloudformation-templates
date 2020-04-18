@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Aviatrix Systems - <Custom 5 Tunnel> - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
+    "Description": "Aviatrix Systems - <Metered 24x7 Support> - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -109,37 +109,39 @@
         "T2SeriesTrue": {
             "Fn::Or": [
                 {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.large"]},
-                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]}
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.xlarge"]},
+                {"Fn::Equals" : [{"Ref" : "InstanceTypeParam"}, "t2.2xlarge"]}
             ]
         }
     },
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-0396240ec575912f4", "Alias": "Virginia" },
-            "us-east-2":      { "Name": "ami-0795394708ca4c986", "Alias": "Ohio" },
-            "us-west-1":      { "Name": "ami-016eb0cec93be4ab0", "Alias": "California" },
-            "us-west-2":      { "Name": "ami-0cc96c592da5bcd4c", "Alias": "Oregon" },
+            "us-east-1":      { "Name": "ami-0a81f891b1aac5672", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-0d33395d0bd8ccb13", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-076ac0bc01e3441a8", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-05a824a3712ebe6e7", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-07d648b44880d21a4", "Alias": "Canada-Central" },
+            "ca-central-1":   { "Name": "ami-083924494b6c6ea37", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-082585d4520be437b", "Alias": "Frankfurt" },
-            "eu-west-1":      { "Name": "ami-068981fb9d20dd58e", "Alias": "Ireland" },
-            "eu-west-2":      { "Name": "ami-0efd5a381ca55e87f", "Alias": "London" },
-            "eu-west-3":      { "Name": "ami-0883875456fbe0ab2", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-0c6e9612fef9e3d0e", "Alias": "Stockholm" },
+            "eu-central-1":   { "Name": "ami-0788eb16e42dc9be1", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-02d58cce35f8d0245", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-0aae360f0766e3f6c", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-0dada251d09aa6f1b", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-02b2a45089a3b9f10", "Alias": "Stockholm" },
 
-            "ap-east-1":      { "Name": "ami-0685cd897f1c7ba36", "Alias": "Hong Kong" },
-            "ap-southeast-1": { "Name": "ami-0f172b650be4adf91", "Alias": "Singapore" },
-            "ap-southeast-2": { "Name": "ami-0b5e1b13b91aebda3", "Alias": "Sydney" },
-            "ap-northeast-2": { "Name": "ami-0ade7ce3c84a63987", "Alias": "Seoul" },
-            "ap-northeast-1": { "Name": "ami-0d5401a4cc75b221f", "Alias": "Tokyo" },
-            "ap-south-1":     { "Name": "ami-09ca552765bf24568", "Alias": "Mumbai" },
+            "ap-east-1":      { "Name": "ami-07406019dc8238c2e", "Alias": "Hong Kong" },
+            "ap-southeast-1": { "Name": "ami-01d96e83e3b07ba97", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-0ffb795b849b5cf95", "Alias": "Sydney" },
+            "ap-northeast-2": { "Name": "ami-0b8a963d837af2946", "Alias": "Seoul" },
+            "ap-northeast-1": { "Name": "ami-0c6dba5df2cc755d5", "Alias": "Tokyo" },
+            
+            "ap-south-1":     { "Name": "ami-0045f7b588ebc7b56", "Alias": "Mumbai" },
 
-            "sa-east-1":      { "Name": "ami-062530923a808baac", "Alias": "South America-Sao Paulo" },
-            "me-south-1":     { "Name": "ami-NOT_available_yet", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-42b25e33",          "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-fb5c689a",          "Alias": "AWS Gov West 1" }
+            "sa-east-1":      { "Name": "ami-0b6c5e98dec130218", "Alias": "South America-Sao Paulo" },
+            "me-south-1":     { "Name": "ami-0782db47aac63b9aa", "Alias": "Middle East Bahrain" },
+            "us-gov-east-1":  { "Name": "ami-c2c925b3",          "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-981828f9",          "Alias": "AWS Gov West 1" }
         }
     },
 
@@ -285,7 +287,9 @@
                                 "guardduty:Get*",
                                 "guardduty:List*",
                                 "ram:Get*",
-                                "ram:List*"
+                                "ram:List*",
+                                "networkmanager:Get*",
+                                "networkmanager:List*"
                             ],
                             "Resource": "*"
                         },
@@ -298,6 +302,8 @@
                                 "ec2:CreateNetworkAclEntry",
                                 "ec2:ReplaceNetworkAclEntry",
                                 "ec2:DeleteNetworkAclEntry",
+                                "ec2:AssociateVpcCidrBlock",
+                                "ec2:AssociateSubnetCidrBlock",
                                 "ec2:CreateSubnet",
                                 "ec2:DeleteSubnet",
                                 "ec2:ModifySubnetAttribute",
@@ -436,8 +442,10 @@
                                 "route53:ChangeResourceRecordSets",
                                 "ec2:*Volume*",
                                 "ec2:*Snapshot*",
+                                "ec2:*TransitGatewayPeeringAttachment",
                                 "guardduty:*",
-                                "globalaccelerator:*"
+                                "globalaccelerator:*",
+                                "networkmanager:*"
                             ],
                             "Resource": "*"
                         }

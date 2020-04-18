@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Aviatrix Systems - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
+    "Description": "Aviatrix Systems - <VPN Metered> - Creates the necessary IAM policies, roles, security group and launches Aviatrix Controller EC2 instance.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -75,7 +75,7 @@
         },
         "InstanceTypeParam": {
             "Type": "String",
-            "Default": "t2.large",
+            "Default": "t3.large",
             "AllowedValues": [
                 "t2.large",
                 "t2.xlarge",
@@ -93,7 +93,7 @@
                 "c5.xlarge",
                 "c5.2xlarge"
             ],
-            "Description": "Select an instance size for the controller. Default is t2.large"
+            "Description": "Select an instance size for the controller. Default is t3.large"
         }
     },
 
