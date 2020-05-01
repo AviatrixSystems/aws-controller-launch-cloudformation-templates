@@ -140,8 +140,8 @@
 
             "sa-east-1":      { "Name": "ami-074d9a5be52f71510", "Alias": "South America-Sao Paulo" },
             "me-south-1":     { "Name": "ami-027e3f09d5ca229e1", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-6f3edc1e",          "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-e980a188",          "Alias": "AWS Gov West 1" }
+            "us-gov-east-1":  { "Name": "ami-656f8214",          "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-01c5ee60",          "Alias": "AWS Gov West 1" }
         }
     },
 
@@ -491,7 +491,8 @@
                         "DeviceName": "/dev/sda1",
                         "Ebs": {
                             "VolumeSize": "32",
-                            "VolumeType": "gp2"
+                            "VolumeType": "gp2",
+                            "Encrypted": "true"
                         }
                     }
                 ],
