@@ -117,30 +117,32 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-038d3fa2f6f9892df", "Alias": "Virginia" },
-            "us-east-2":      { "Name": "ami-06bc6117f1d617142", "Alias": "Ohio" },
-            "us-west-1":      { "Name": "ami-08e8fd67ca19cadca", "Alias": "California" },
-            "us-west-2":      { "Name": "ami-0bbaa68dc2ab7fd4e", "Alias": "Oregon" },
+            "us-east-1":      { "Name": "ami-0bc31d4656a9885fe", "Alias": "Virginia" },
+            "us-east-2":      { "Name": "ami-027fe5ee9bf635957", "Alias": "Ohio" },
+            "us-west-1":      { "Name": "ami-0ecdc6eb519c7c1e2", "Alias": "California" },
+            "us-west-2":      { "Name": "ami-05d1929c839271838", "Alias": "Oregon" },
 
-            "ca-central-1":   { "Name": "ami-0b95a4ace7d866a0a", "Alias": "Canada-Central" },
+            "ca-central-1":   { "Name": "ami-00809146500ac8d3c", "Alias": "Canada-Central" },
 
-            "eu-central-1":   { "Name": "ami-0e5ffb05f3f0cbdd5", "Alias": "Frankfurt" },
-            "eu-west-1":      { "Name": "ami-05f4e9a47b543e9be", "Alias": "Ireland" },
-            "eu-west-2":      { "Name": "ami-091ef132d810246b2", "Alias": "London" },
-            "eu-west-3":      { "Name": "ami-0d6404d2665af9545", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-07fd9433efeb7211b", "Alias": "Stockholm" },
+            "eu-central-1":   { "Name": "ami-03d4886ccc6ffa7cc", "Alias": "Frankfurt" },
+            "eu-west-1":      { "Name": "ami-04e71c2fc27336bea", "Alias": "Ireland" },
+            "eu-west-2":      { "Name": "ami-0de6f66e492e6ca27", "Alias": "London" },
+            "eu-west-3":      { "Name": "ami-06cb7f1a102fc1ba7", "Alias": "Paris" },
+            "eu-north-1":     { "Name": "ami-080f50573db5a3391", "Alias": "Stockholm" },
 
-            "ap-east-1":      { "Name": "ami-0a3072f1f494a1ac2", "Alias": "Hong Kong" },
-            "ap-southeast-1": { "Name": "ami-0afa1dffd043dc347", "Alias": "Singapore" },
-            "ap-southeast-2": { "Name": "ami-0ffdc694ce75cab7c", "Alias": "Sydney" },
-            "ap-northeast-2": { "Name": "ami-0db2784570829df69", "Alias": "Seoul" },
-            "ap-northeast-1": { "Name": "ami-078b7b83aee766263", "Alias": "Tokyo" },
-            "ap-south-1":     { "Name": "ami-0bd0a4065d407b210", "Alias": "Mumbai" },
+            "ap-east-1":      { "Name": "ami-0454dee38dd794a3f", "Alias": "Hong Kong" },
+            "ap-southeast-1": { "Name": "ami-0c6d5626c3d7b409d", "Alias": "Singapore" },
+            "ap-southeast-2": { "Name": "ami-01c78e74675ee6431", "Alias": "Sydney" },
+            "ap-northeast-2": { "Name": "ami-04ff7ce20c8fc5f93", "Alias": "Seoul" },
+            "ap-northeast-1": { "Name": "ami-07d5ea0cba0aeb5ce", "Alias": "Tokyo" },
+            "ap-south-1":     { "Name": "ami-067d753ea0e7f51a5", "Alias": "Mumbai" },
 
-            "sa-east-1":      { "Name": "ami-0e30e4050565bbafb", "Alias": "South America-Sao Paulo" },
-            "me-south-1":     { "Name": "ami-0fcd6740acbb9aa1b", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-fcb75b8d",          "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-65695d04",          "Alias": "AWS Gov West 1" }
+            "sa-east-1":      { "Name": "ami-03e5f427a95dfe16e", "Alias": "South America-Sao Paulo" },
+            "me-south-1":     { "Name": "ami-0b1d3d8ecd2ecf7cb", "Alias": "Middle East Bahrain" },
+            "af-south-1":     { "Name": "ami-043914871eddd9bb6", "Alias": "Africa - Cape Town" },
+
+            "us-gov-east-1":  { "Name": "ami-0618e7d42a24d0399",  "Alias": "AWS Gov East 1" },
+            "us-gov-west-1":  { "Name": "ami-0763844570345e0b3",  "Alias": "AWS Gov West 1" }
         }
     },
 
