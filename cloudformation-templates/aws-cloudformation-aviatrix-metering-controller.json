@@ -117,31 +117,86 @@
 
     "Mappings": {
         "RegionMap": {
-            "us-east-1":      { "Name": "ami-0858e90edb88d9de0", "Alias": "Virginia" },
-            "us-east-2":      { "Name": "ami-0c99b9f0c65623ad2", "Alias": "Ohio" },
-            "us-west-1":      { "Name": "ami-0d911542125beb411", "Alias": "California" },
-            "us-west-2":      { "Name": "ami-0bcc520c761a209d9", "Alias": "Oregon" },
-
-            "ca-central-1":   { "Name": "ami-060fdad9585f00295", "Alias": "Canada-Central" },
-
-            "eu-central-1":   { "Name": "ami-0fc80ef6e32247baa", "Alias": "Frankfurt" },
-            "eu-west-1":      { "Name": "ami-0b61fa1e620089e80", "Alias": "Ireland" },
-            "eu-west-2":      { "Name": "ami-001ef594221572b0d", "Alias": "London" },
-            "eu-west-3":      { "Name": "ami-017ef356604f5b4f9", "Alias": "Paris" },
-            "eu-north-1":     { "Name": "ami-0e34fab551dfb327a", "Alias": "Stockholm" },
-
-            "ap-east-1":      { "Name": "ami-0ff545e8d0ea44e81", "Alias": "Hong Kong" },
-            "ap-southeast-1": { "Name": "ami-08022902184c1dba9", "Alias": "Singapore" },
-            "ap-southeast-2": { "Name": "ami-093acc21a521ba0e5", "Alias": "Sydney" },
-            "ap-northeast-2": { "Name": "ami-0ade8b69f4b76ee48", "Alias": "Seoul" },
-            "ap-northeast-1": { "Name": "ami-011faa0cf53000ace", "Alias": "Tokyo" },
-            
-            "ap-south-1":     { "Name": "ami-00c57ee0b7fd172ad", "Alias": "Mumbai" },
-
-            "sa-east-1":      { "Name": "ami-074d9a5be52f71510", "Alias": "South America-Sao Paulo" },
-            "me-south-1":     { "Name": "ami-027e3f09d5ca229e1", "Alias": "Middle East Bahrain" },
-            "us-gov-east-1":  { "Name": "ami-656f8214",          "Alias": "AWS Gov East 1" },
-            "us-gov-west-1":  { "Name": "ami-01c5ee60",          "Alias": "AWS Gov West 1" }
+            "us-east-1": {
+                "Name": "ami-06ebb151f753c54a8",
+                "Alias": "Virginia"
+            },
+            "us-east-2": {
+                "Name": "ami-0c3e2aa105b6fe227",
+                "Alias": "Ohio"
+            },
+            "us-west-1": {
+                "Name": "ami-09be440fc4cf8b5e6",
+                "Alias": "California"
+            },
+            "us-west-2": {
+                "Name": "ami-00786fce27a8ef6ad",
+                "Alias": "Oregon"
+            },
+            "ca-central-1": {
+                "Name": "ami-0b9a3eae05c964484",
+                "Alias": "Canada-Central"
+            },
+            "eu-central-1": {
+                "Name": "ami-0e9249475495b95e8",
+                "Alias": "Frankfurt"
+            },
+            "eu-west-1": {
+                "Name": "ami-04c55f66877982b2c",
+                "Alias": "Ireland"
+            },
+            "eu-west-2": {
+                "Name": "ami-0aa54c66b380c498a",
+                "Alias": "London"
+            },
+            "eu-west-3": {
+                "Name": "ami-0eb9afe54fd9b0c4c",
+                "Alias": "Paris"
+            },
+            "eu-north-1": {
+                "Name": "ami-0d87021cbd8e51e33",
+                "Alias": "Stockholm"
+            },
+            "ap-east-1": {
+                "Name": "ami-0adc60aaf832aaab0",
+                "Alias": "Hong Kong"
+            },
+            "ap-southeast-1": {
+                "Name": "ami-0be76836e76f4d0a3",
+                "Alias": "Singapore"
+            },
+            "ap-southeast-2": {
+                "Name": "ami-0ac20a899bb682d32",
+                "Alias": "Sydney"
+            },
+            "ap-northeast-2": {
+                "Name": "ami-05abead47c8a4c992",
+                "Alias": "Seoul"
+            },
+            "ap-northeast-1": {
+                "Name": "ami-0ecfef912838b0c64",
+                "Alias": "Tokyo"
+            },
+            "ap-south-1": {
+                "Name": "ami-02047641ceafac429",
+                "Alias": "Mumbai"
+            },
+            "sa-east-1": {
+                "Name": "ami-09ed6e6a23469ec9b",
+                "Alias": "South America-Sao Paulo"
+            },
+            "me-south-1": {
+                "Name": "ami-0e04a72d5fce0e311",
+                "Alias": "Middle East Bahrain"
+            },
+            "us-gov-east-1": {
+                "Name": "ami-0754f2926e80b28ab",
+                "Alias": "AWS Gov East 1"
+            },
+            "us-gov-west-1": {
+                "Name": "ami-01cd5582b99892424",
+                "Alias": "AWS Gov West 1"
+            }
         }
     },
 
