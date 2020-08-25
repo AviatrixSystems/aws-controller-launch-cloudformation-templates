@@ -157,6 +157,10 @@
                 "Name": "ami-0d87021cbd8e51e33",
                 "Alias": "Stockholm"
             },
+            "eu-south-1": {
+                "Name": "ami-00ffee7afb7b14c65",
+                "Alias": "Milan"
+            },
             "ap-east-1": {
                 "Name": "ami-0adc60aaf832aaab0",
                 "Alias": "Hong Kong"
@@ -188,6 +192,10 @@
             "me-south-1": {
                 "Name": "ami-0e04a72d5fce0e311",
                 "Alias": "Middle East Bahrain"
+            },
+            "af-south-1": {
+                "Name": "ami-043914871eddd9bb6",
+                "Alias": "Africa - Cape Town"
             },
             "us-gov-east-1": {
                 "Name": "ami-0754f2926e80b28ab",
