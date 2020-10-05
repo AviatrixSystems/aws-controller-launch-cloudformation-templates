@@ -91,7 +91,10 @@
 
                 "c5.large",
                 "c5.xlarge",
-                "c5.2xlarge"
+                "c5.2xlarge",
+                "c5.4xlarge",
+                "c5.9xlarge",
+                "c5.18xlarge"
             ],
             "Description": "Select an instance size for the controller. Default is t3.large"
         }
